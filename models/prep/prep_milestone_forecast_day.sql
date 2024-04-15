@@ -1,6 +1,6 @@
-WITH forecast_day_data AS (
+WITH forecast_milestone_day_data AS (
     SELECT * 
-    FROM {{ref('staging_forecast_day')}}
+    FROM {{ref('staging_milestones_forecast_day')}}
 ),
 add_features AS (
     SELECT *
@@ -11,7 +11,7 @@ add_features AS (
         ,date_part('week', date) AS week_of_year          -- calender week number as number
         ,to_char(date, 'IYYY-IW') AS year_and_week        -- year-calenderweek as text like '2024-43'
 
-    FROM forecast_day_data
+    FROM forecast_milestone_day_data
 )
 SELECT *
 FROM add_features
