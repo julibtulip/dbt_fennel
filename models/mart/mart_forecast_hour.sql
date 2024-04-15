@@ -1,6 +1,6 @@
 WITH joining_hour_location AS (
         SELECT * FROM {{ref('prep_forecast_hour')}}
-        LEFT JOIN {{ref('staging_location')}}
+        LEFT JOIN {{ref('staging_locations')}}
         USING(city,region,country)
 ),
 adding_features AS (
