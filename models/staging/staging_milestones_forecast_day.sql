@@ -21,17 +21,17 @@ WITH forecast_day_surfing AS (
             -- wind
             ,(extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' ->> 'maxwind_kph')::NUMERIC AS max_wind_kph
 
-            -- Marine Weather -> Tides
-            ,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'tides' ->> 'tide_time')::NUMERIC AS tide_time
-            ,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'tides' ->> 'tide_height_mt')::NUMERIC AS tide_height_mt
-            ,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'tides' ->> 'tide_type')::NUMERIC AS tide_type               
+            -- Marine Weather -> Tides ALL NULL VALUES
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'tides' ->> 'tide_time')::NUMERIC AS tide_time
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'tides' ->> 'tide_height_mt')::NUMERIC AS tide_height_mt
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'tides' ->> 'tide_type')::NUMERIC AS tide_type               
     
-            -- Marine Weather -> Hour
-            ,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'water_temp_c')::NUMERIC AS water_temp_c 
-            ,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'sig_ht_mt')::NUMERIC AS sig_ht_mt
-            ,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'swell_ht_mt')::NUMERIC AS swell_ht_mt
-            ,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'swell_dir')::NUMERIC AS swell_dir    
-            ,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'swell_period_secs')::NUMERIC AS swell_period_secs   
+            -- Marine Weather -> Hour ALL NULL VALUES
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'water_temp_c')::NUMERIC AS water_temp_c 
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'sig_ht_mt')::NUMERIC AS sig_ht_mt
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'swell_ht_mt')::NUMERIC AS swell_ht_mt
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'swell_dir')::NUMERIC AS swell_dir    
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'swell_period_secs')::NUMERIC AS swell_period_secs   
  
 
             -- condition information (text, icon, code)
