@@ -4,7 +4,7 @@
 
 WITH joining_day_location AS (
         SELECT * FROM {{ref('prep_forecast_day')}}
-        LEFT JOIN {{ref('staging_location')}}
+        LEFT JOIN {{ref('staging_locations')}}
         USING(city, region, country)
 ),
 filtering_features AS (
