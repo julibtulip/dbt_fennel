@@ -14,9 +14,25 @@ WITH forecast_day_surfing AS (
             ,(extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' ->> 'totalprecip_mm')::NUMERIC AS total_precip_mm
             ,(extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' ->> 'avgvis_km')::NUMERIC AS avg_vis_km
             ,(extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' ->> 'avghumidity')::NUMERIC AS avg_humidity
-            ,(extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' ->> 'maxwind_kph')::NUMERIC AS max_wind_kph
             ,(extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' ->> 'daily_will_it_rain')::INT AS daily_will_it_rain
             ,(extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' ->> 'daily_chance_of_rain')::INT AS daily_chance_of_rain
+            
+            -- surfing specific (wind and marine)
+            -- wind
+            ,(extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' ->> 'maxwind_kph')::NUMERIC AS max_wind_kph
+
+            -- Marine Weather -> Tides ALL NULL VALUES
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'tides' ->> 'tide_time')::NUMERIC AS tide_time
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'tides' ->> 'tide_height_mt')::NUMERIC AS tide_height_mt
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'tides' ->> 'tide_type')::NUMERIC AS tide_type               
+    
+            -- Marine Weather -> Hour ALL NULL VALUES
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'water_temp_c')::NUMERIC AS water_temp_c 
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'sig_ht_mt')::NUMERIC AS sig_ht_mt
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'swell_ht_mt')::NUMERIC AS swell_ht_mt
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'swell_dir')::NUMERIC AS swell_dir    
+            --,(extracted_data -> 'forecast' -> 'Marine weather' -> 0 -> 'Hour' ->> 'swell_period_secs')::NUMERIC AS swell_period_secs   
+ 
 
             -- condition information (text, icon, code)
             ,(extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' -> 'condition' ->> 'text')::VARCHAR(255) AS condition_text
